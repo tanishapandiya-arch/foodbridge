@@ -1,0 +1,789 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
+
+
+:root {
+
+  /* Colors */
+  --primary: #1B4332;
+  --primary-light: #2D6A4F;
+  --accent: #F4A261;
+
+  --background: #FAF7F0;
+  --surface: #FFFFFF;
+
+  --text: #1F2937;
+  --text-light: #6B7280;
+
+  --border: #E5E7EB;
+
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 15px 40px rgba(0,0,0,0.12);
+
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+
+  --max-width:1200px;
+
+  --transition:all 0.3s ease;
+
+}
+
+
+/* Global */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+
+body{
+
+  font-family:'Inter',sans-serif;
+  background:var(--background);
+  color:var(--text);
+
+}
+
+
+h1,h2,h3,h4{
+
+  font-family:'Poppins',sans-serif;
+
+}
+
+
+a{
+
+  text-decoration:none;
+  color:inherit;
+
+}
+
+
+button{
+
+  font-family:inherit;
+  cursor:pointer;
+
+}
+
+
+img{
+
+  max-width:100%;
+  display:block;
+
+}
+
+
+.container{
+
+  max-width:var(--max-width);
+  margin:auto;
+  padding:0 5%;
+
+}
+
+
+
+/* Navbar */
+
+.navbar{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:20px 60px;
+
+  background:var(--surface);
+
+  box-shadow:var(--shadow-sm);
+
+}
+
+
+.logo{
+
+  font-family:'Poppins';
+  font-size:24px;
+  font-weight:700;
+
+  color:var(--primary);
+
+}
+
+
+
+.nav-links{
+
+  display:flex;
+  gap:30px;
+  align-items:center;
+
+}
+
+
+.nav-links a{
+
+  color:var(--text);
+  font-weight:500;
+
+}
+
+
+.nav-links button{
+
+  background:var(--primary);
+
+  color:white;
+
+  border:none;
+
+  padding:12px 25px;
+
+  border-radius:30px;
+
+  transition:var(--transition);
+
+}
+
+
+.nav-links button:hover{
+
+  background:var(--primary-light);
+
+}
+
+
+
+
+/* Hero */
+
+
+.hero{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:70px 80px;
+
+min-height:80vh;
+
+}
+
+
+
+.hero-content{
+
+width:55%;
+
+}
+
+
+
+.hero h1{
+
+font-size:55px;
+
+line-height:1.2;
+
+color:var(--primary);
+
+}
+
+
+
+.hero p{
+
+font-size:18px;
+
+margin-top:20px;
+
+line-height:1.7;
+
+color:var(--text-light);
+
+}
+
+
+
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+margin-top:30px;
+
+}
+
+
+
+.primary-btn,
+.secondary-btn{
+
+padding:14px 30px;
+
+border-radius:30px;
+
+font-size:16px;
+
+transition:var(--transition);
+
+}
+
+
+
+.primary-btn{
+
+background:var(--primary);
+
+color:white;
+
+border:none;
+
+}
+
+
+
+.primary-btn:hover{
+
+background:var(--primary-light);
+
+}
+
+
+
+.secondary-btn{
+
+background:white;
+
+border:2px solid var(--primary);
+
+color:var(--primary);
+
+}
+
+
+
+.secondary-btn:hover{
+
+background:var(--primary);
+
+color:white;
+
+}
+
+
+
+
+
+/* Stats */
+
+
+.stats{
+
+display:flex;
+
+gap:50px;
+
+margin-top:50px;
+
+}
+
+
+
+.stats h2{
+
+color:var(--primary-light);
+
+font-size:32px;
+
+}
+
+
+
+
+/* Hero Image */
+
+
+.hero-image{
+
+height:350px;
+
+width:350px;
+
+border-radius:50%;
+
+background:#E9F5DB;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:120px;
+
+}
+
+
+
+/* How Section */
+
+
+.how-section{
+
+padding:70px 80px;
+
+text-align:center;
+
+background:white;
+
+}
+
+
+
+.how-section h2{
+
+font-size:40px;
+
+color:var(--primary);
+
+}
+
+
+
+.section-subtitle{
+
+margin-top:15px;
+
+color:var(--text-light);
+
+}
+
+
+
+.cards{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+margin-top:50px;
+
+}
+
+
+
+.work-card{
+
+background:var(--background);
+
+padding:35px;
+
+width:300px;
+
+border-radius:var(--radius-md);
+
+box-shadow:var(--shadow-sm);
+
+transition:var(--transition);
+
+}
+
+
+
+.work-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:var(--shadow-lg);
+
+}
+
+
+
+.work-card h3{
+
+color:var(--primary);
+
+margin-bottom:15px;
+
+}
+
+
+
+.work-card p{
+
+line-height:1.6;
+
+color:var(--text-light);
+
+}
+
+
+
+
+/* Food Section */
+
+
+.food-section{
+
+padding:70px 80px;
+
+text-align:center;
+
+}
+
+
+
+.food-section h2{
+
+font-size:40px;
+
+color:var(--primary);
+
+}
+
+
+
+.food-cards{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+margin-top:50px;
+
+}
+
+
+
+.food-card{
+
+background:white;
+
+width:300px;
+
+padding:25px;
+
+border-radius:var(--radius-md);
+
+box-shadow:var(--shadow-sm);
+
+transition:var(--transition);
+
+}
+
+
+
+.food-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:var(--shadow-lg);
+
+}
+
+
+
+.food-image{
+
+height:120px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:70px;
+
+background:#E9F5DB;
+
+border-radius:15px;
+
+margin-bottom:20px;
+
+}
+
+
+
+.food-card h3{
+
+color:var(--primary);
+
+margin-bottom:15px;
+
+}
+
+
+
+.food-card p{
+
+margin:8px;
+
+color:var(--text-light);
+
+}
+
+
+
+.food-card button{
+
+margin-top:15px;
+
+padding:12px 25px;
+
+border:none;
+
+border-radius:25px;
+
+background:var(--primary);
+
+color:white;
+
+}
+
+
+
+.food-card button:hover{
+
+background:var(--primary-light);
+
+}
+
+
+
+
+/* Footer */
+
+
+.footer{
+
+background:linear-gradient(
+135deg,
+var(--primary),
+var(--primary-light)
+);
+
+color:white;
+
+padding:60px 80px;
+
+text-align:center;
+
+}
+
+
+
+.footer h2{
+
+font-size:30px;
+
+margin-bottom:15px;
+
+}
+
+
+
+.footer p{
+
+line-height:1.6;
+
+}
+
+
+
+.footer-links{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+margin:25px 0;
+
+}
+
+
+
+.footer-links a{
+
+color:white;
+
+}
+
+
+
+.copyright{
+
+font-size:14px;
+
+opacity:0.8;
+
+}
+
+
+
+
+/* Mobile */
+
+
+@media(max-width:768px){
+
+
+.navbar{
+
+padding:20px;
+
+}
+
+
+.nav-links{
+
+display:none;
+
+}
+
+
+
+.hero{
+
+flex-direction:column;
+
+padding:40px 20px;
+
+text-align:center;
+
+}
+
+
+
+.hero-content{
+
+width:100%;
+
+}
+
+
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+
+
+.hero-image{
+
+margin-top:40px;
+
+height:250px;
+
+width:250px;
+
+}
+
+
+
+.stats{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+
+
+.cards,
+.food-cards{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+
+
+.work-card,
+.food-card{
+
+width:90%;
+
+}
+
+
+
+.footer{
+
+padding:40px 20px;
+
+}
+
+
+}
+.login-btn{
+
+background:var(--primary);
+
+color:white;
+
+border:none;
+
+padding:12px 25px;
+
+border-radius:25px;
+
+}
+
+
+.register-btn{
+
+background:var(--accent);
+
+color:white;
+
+border:none;
+
+padding:12px 25px;
+
+border-radius:25px;
+
+}
+
+
+.login-btn:hover{
+
+background:var(--primary-light);
+
+}
+
+
+.register-btn:hover{
+
+opacity:0.85;
+
+}
