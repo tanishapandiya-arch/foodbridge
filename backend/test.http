@@ -1,0 +1,74 @@
+### Signup
+
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Tanisha",
+  "email": "tanisha@gmail.com",
+  "password": "12345678",
+  "role": "donor"
+}
+### Login
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "tanisha@gmail.com",
+  "password": "12345678"
+}
+### Get Current User
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdiNTU0MzViNTUzOGFlNmMzNDVkMmMiLCJyb2xlIjoiZG9ub3IiLCJpYXQiOjE3ODY0Njg4NjgsImV4cCI6MTc4NzA3MzY2OH0.tBuLPE0t6v1icP3ZCVyJZ9wm2uvsCtHt_gOqizb0pmw
+### Post Food
+
+POST http://localhost:5000/api/food
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdiNTU0MzViNTUzOGFlNmMzNDVkMmMiLCJyb2xlIjoiZG9ub3IiLCJpYXQiOjE3ODY0Njg4NjgsImV4cCI6MTc4NzA3MzY2OH0.tBuLPE0t6v1icP3ZCVyJZ9wm2uvsCtHt_gOqizb0pmw
+Content-Type: application/json
+
+{
+  "foodType": "Rice and Dal",
+  "quantity": 20,
+  "description": "Freshly cooked food",
+  "pickupTime": "6 PM - 8 PM",
+  "location": "College Hostel"
+}
+### Get All Food
+
+GET http://localhost:5000/api/food
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdkZWRhMWVlYmIzMThlYjc0OTgwM2QiLCJyb2xlIjoibmdvIiwiaWF0IjoxNzg2NjM4NDMzLCJleHAiOjE3ODcyNDMyMzN9.50RluYenIMfKFuZPc_J9Lov3IQhWVOKWQQLAVdNqDK4
+### NGO Signup
+
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Helping Hands NGO",
+  "email": "helpinghands@gmail.com",
+  "password": "12345678",
+  "role": "ngo"
+}
+### NGO Login
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "helpinghands@gmail.com",
+  "password": "12345678"
+}
+### Claim Food
+
+PATCH http://localhost:5000/api/food/6a7def5155c0be40282c2455/claim
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdkZWRhMWVlYmIzMThlYjc0OTgwM2QiLCJyb2xlIjoibmdvIiwiaWF0IjoxNzg2NjM4NDMzLCJleHAiOjE3ODcyNDMyMzN9.50RluYenIMfKFuZPc_J9Lov3IQhWVOKWQQLAVdNqDK4
+
+### Donor - My Foods
+
+GET http://localhost:5000/api/food/my-food
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdiNTU0MzViNTUzOGFlNmMzNDVkMmMiLCJyb2xlIjoiZG9ub3IiLCJpYXQiOjE3ODY2Mzg4NjIsImV4cCI6MTc4NzI0MzY2Mn0.Kyglky2IngTx1H4F2QB9_ctFp4ScjC4eyKU7y4m5k78
+### NGO - My Claimed Foods
+
+GET http://localhost:5000/api/food/claimed-food
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdkZWRhMWVlYmIzMThlYjc0OTgwM2QiLCJyb2xlIjoibmdvIiwiaWF0IjoxNzg2NjM4NDMzLCJleHAiOjE3ODcyNDMyMzN9.50RluYenIMfKFuZPc_J9Lov3IQhWVOKWQQLAVdNqDK4
