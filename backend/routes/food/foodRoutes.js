@@ -1,5 +1,6 @@
 import express from "express";
 import Food from "../../models/Food.js";
+import User from "../../models/User.js";
 import authMiddleware from "../../middleware/authMiddleware.js";
 import roleMiddleware from "../../middleware/roleMiddleware.js";
 
@@ -21,14 +22,12 @@ router.post(
         location
       } = req.body;
 
-      // Check required fields
       if (!foodType || !quantity || !pickupTime || !location) {
         return res.status(400).json({
           message: "Please fill all required fields"
         });
       }
 
-      // Create food
       const food = await Food.create({
         donor: req.user.userId,
         foodType,
@@ -90,6 +89,16 @@ router.get(
   roleMiddleware("ngo"),
   async (req, res) => {
     try {
+
+      // Check NGO verification
+      const ngo = await User.findById(req.user.userId);
+
+      if (!ngo || !ngo.isVerified) {
+        return res.status(403).json({
+          message: "NGO is not verified"
+        });
+      }
+
       const foods = await Food.find()
         .populate("donor", "name email")
         .sort({ createdAt: -1 });
@@ -108,7 +117,7 @@ router.get(
     }
   }
 );
-// ==================== CLAIM FOOD ====================
+
 
 // ==================== CLAIM FOOD ====================
 
@@ -119,6 +128,15 @@ router.patch(
   async (req, res) => {
     try {
       console.log("CLAIM ID:", req.params.id);
+
+      // Check NGO verification
+      const ngo = await User.findById(req.user.userId);
+
+      if (!ngo || !ngo.isVerified) {
+        return res.status(403).json({
+          message: "NGO is not verified"
+        });
+      }
 
       const food = await Food.findOne({
         _id: req.params.id
@@ -157,6 +175,8 @@ router.patch(
     }
   }
 );
+
+
 // ==================== GET MY CLAIMED FOODS ====================
 
 router.get(
@@ -165,6 +185,16 @@ router.get(
   roleMiddleware("ngo"),
   async (req, res) => {
     try {
+
+      // Check NGO verification
+      const ngo = await User.findById(req.user.userId);
+
+      if (!ngo || !ngo.isVerified) {
+        return res.status(403).json({
+          message: "NGO is not verified"
+        });
+      }
+
       const foods = await Food.find({
         claimedBy: req.user.userId
       }).sort({ updatedAt: -1 });

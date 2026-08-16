@@ -10,16 +10,19 @@ const foodSchema = new mongoose.Schema(
 
     foodType: {
       type: String,
-      required: true
+      required: true,
+      trim: true
     },
 
     quantity: {
       type: Number,
-      required: true
+      required: true,
+      min: 1
     },
 
     description: {
-      type: String
+      type: String,
+      trim: true
     },
 
     pickupTime: {
@@ -29,19 +32,21 @@ const foodSchema = new mongoose.Schema(
 
     location: {
       type: String,
-      required: true
+      required: true,
+      trim: true
     },
-    status: {
-  type: String,
-  enum: ["available", "claimed"],
-  default: "available"
-},
 
-claimedBy: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: "User",
-  default: null
-}
+    status: {
+      type: String,
+      enum: ["available", "claimed"],
+      default: "available"
+    },
+
+    claimedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null
+    }
   },
   {
     timestamps: true

@@ -72,3 +72,34 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdiN
 
 GET http://localhost:5000/api/food/claimed-food
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdkZWRhMWVlYmIzMThlYjc0OTgwM2QiLCJyb2xlIjoibmdvIiwiaWF0IjoxNzg2NjM4NDMzLCJleHAiOjE3ODcyNDMyMzN9.50RluYenIMfKFuZPc_J9Lov3IQhWVOKWQQLAVdNqDK4
+### Admin Signup
+
+### Admin Signup
+
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "FoodBridge Admin",
+  "email": "admin@foodbridge.com",
+  "password": "admin123",
+  "role": "admin"
+}
+### Admin Login
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@foodbridge.com",
+  "password": "admin123"
+}
+### Admin - Get All NGOs
+
+GET http://localhost:5000/api/admin/ngos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTgxY2E3MGE5ODViNmE0NGIxYWQ5NDQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3ODY4OTE1MDksImV4cCI6MTc4NzQ5NjMwOX0.d65SouZ4Sv-WmEzfFLFuScPDK8kFXjPiEhFRTxId8Cc
+
+### Admin - Verify NGO
+
+PATCH http://localhost:5000/api/admin/ngos/6a7deda1eebb318eb749803d/verify
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTgxY2E3MGE5ODViNmE0NGIxYWQ5NDQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3ODY4OTE1MDksImV4cCI6MTc4NzQ5NjMwOX0.d65SouZ4Sv-WmEzfFLFuScPDK8kFXjPiEhFRTxId8Cc

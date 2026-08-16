@@ -36,7 +36,8 @@ router.post("/signup", async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      role: role || "donor"
+      role: role || "donor",
+      isVerified: role === "donor"
     });
 
     // Create JWT
@@ -58,7 +59,8 @@ router.post("/signup", async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role
+        role: user.role,
+        isVerified: user.isVerified
       }
     });
 
@@ -125,7 +127,8 @@ router.post("/login", async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role
+        role: user.role,
+        isVerified: user.isVerified
       }
     });
 
@@ -137,11 +140,14 @@ router.post("/login", async (req, res) => {
     });
   }
 });
+
+
 // ==================== GET CURRENT USER ====================
 
 router.get("/me", authMiddleware, async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId).select("-password");
+    const user = await User.findById(req.user.userId)
+      .select("-password");
 
     if (!user) {
       return res.status(404).json({
