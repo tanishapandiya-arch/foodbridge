@@ -12,12 +12,12 @@ function NGODashboard() {
   const [error, setError] = useState("");
   const [claimedError, setClaimedError] = useState("");
 
-  const [claimingId, setClaimingId] = useState(null);
+  const [claimingId, setClaimingId] = useState("");
 
   const token = localStorage.getItem("token");
 
 
-  // ==================== GET ALL AVAILABLE FOOD ====================
+  // ==================== GET AVAILABLE FOODS ====================
 
   const fetchFoods = async () => {
 
@@ -36,16 +36,11 @@ function NGODashboard() {
 
       if (!response.ok) {
         throw new Error(
-          data.message || "Failed to fetch food"
+          data.message || "Failed to fetch food posts"
         );
       }
 
-      // Only show available food
-      const availableFoods = data.foods.filter(
-        (food) => food.status === "available"
-      );
-
-      setFoods(availableFoods);
+      setFoods(data.foods);
 
     } catch (error) {
 
@@ -60,7 +55,7 @@ function NGODashboard() {
   };
 
 
-  // ==================== GET MY CLAIMED FOODS ====================
+  // ==================== GET CLAIMED FOODS ====================
 
   const fetchClaimedFoods = async () => {
 
@@ -100,7 +95,7 @@ function NGODashboard() {
 
   // ==================== CLAIM FOOD ====================
 
-  const handleClaimFood = async (foodId) => {
+  const handleClaim = async (foodId) => {
 
     setClaimingId(foodId);
 
@@ -110,7 +105,6 @@ function NGODashboard() {
         `http://localhost:5000/api/food/${foodId}/claim`,
         {
           method: "PATCH",
-
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -134,12 +128,11 @@ function NGODashboard() {
     } catch (error) {
 
       console.log(error);
-
       alert(error.message);
 
     } finally {
 
-      setClaimingId(null);
+      setClaimingId("");
 
     }
   };
@@ -161,11 +154,10 @@ function NGODashboard() {
 
     <div style={{ padding: "30px" }}>
 
-
       {/* ==================== HEADER ==================== */}
 
       <h1>
-        NGO Dashboard
+        NGO Dashboard 🤝
       </h1>
 
       <p>
@@ -183,95 +175,88 @@ function NGODashboard() {
 
 
       {loading && (
-
         <p>
           Loading food posts...
         </p>
-
       )}
 
 
       {error && (
-
         <p style={{ color: "red" }}>
           {error}
         </p>
-
       )}
 
 
-      {!loading &&
-        !error &&
-        foods.length === 0 && (
-
-          <p>
-            No food is currently available.
-          </p>
-
-        )
-      }
+      {!loading && !error && foods.length === 0 && (
+        <p>
+          No food posts available.
+        </p>
+      )}
 
 
-      {!loading &&
-        foods.length > 0 && (
+      {!loading && !error && foods.length > 0 && (
 
-          <div>
+        <div>
 
-            {foods.map((food) => (
+          {foods.map((food) => (
 
-              <div
-                key={food._id}
-                style={{
-                  border: "1px solid #ddd",
-                  padding: "20px",
-                  margin: "15px 0",
-                  borderRadius: "8px"
-                }}
-              >
+            <div
+              key={food._id}
+              style={{
+                border: "1px solid #ddd",
+                padding: "20px",
+                margin: "15px 0",
+                borderRadius: "10px"
+              }}
+            >
 
-                <h3>
-                  {food.foodType}
-                </h3>
+              <h3>
+                {food.foodType}
+              </h3>
 
-                <p>
-                  Quantity: {food.quantity}
-                </p>
+              <p>
+                Quantity: {food.quantity}
+              </p>
 
-                <p>
-                  Description: {food.description}
-                </p>
+              <p>
+                Description: {food.description}
+              </p>
 
-                <p>
-                  Pickup: {food.pickupTime}
-                </p>
+              <p>
+                Pickup: {food.pickupTime}
+              </p>
 
-                <p>
-                  Location: {food.location}
-                </p>
+              <p>
+                Location: {food.location}
+              </p>
 
-                <p>
-                  Donor:{" "}
-                  {food.donor?.name}
-                </p>
+              <p>
+                Status:{" "}
+                <strong>
+                  {food.status}
+                </strong>
+              </p>
 
+
+              {food.donor && (
 
                 <p>
-                  Status:{" "}
-
-                  <strong>
-                    {food.status}
-                  </strong>
-
+                  Donor: {food.donor.name}
                 </p>
 
+              )}
 
-                {/* CLAIM BUTTON */}
+
+              {food.status === "available" && (
 
                 <button
-                  onClick={() =>
-                    handleClaimFood(food._id)
-                  }
+                  onClick={() => handleClaim(food._id)}
                   disabled={claimingId === food._id}
+                  style={{
+                    padding: "10px 20px",
+                    cursor: "pointer"
+                  }}
                 >
 
                   {claimingId === food._id
@@ -281,17 +266,18 @@ function NGODashboard() {
 
                 </button>
 
-              </div>
+              )}
 
-            ))}
+            </div>
 
-          </div>
+          ))}
 
-        )
-      }
+        </div>
+
+      )}
 
 
-      {/* ==================== MY CLAIMED FOODS ==================== */}
+      {/* ==================== CLAIMED FOODS ==================== */}
 
       <h2 style={{ marginTop: "50px" }}>
         My Claimed Foods
@@ -299,20 +285,16 @@ function NGODashboard() {
 
 
       {claimedLoading && (
-
         <p>
           Loading claimed foods...
         </p>
-
       )}
 
 
       {claimedError && (
-
         <p style={{ color: "red" }}>
           {claimedError}
         </p>
-
       )}
 
 
@@ -329,6 +311,7 @@ function NGODashboard() {
 
 
       {!claimedLoading &&
+        !claimedError &&
         claimedFoods.length > 0 && (
 
           <div>
@@ -341,7 +324,7 @@ function NGODashboard() {
                   border: "1px solid #ddd",
                   padding: "20px",
                   margin: "15px 0",
-                  borderRadius: "8px"
+                  borderRadius: "10px"
                 }}
               >
 
@@ -367,11 +350,9 @@ function NGODashboard() {
 
                 <p>
                   Status:{" "}
-
                   <strong>
                     {food.status}
                   </strong>
-
                 </p>
 
               </div>

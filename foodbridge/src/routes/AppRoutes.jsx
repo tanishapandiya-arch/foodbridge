@@ -7,26 +7,47 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import DonorRegister from "../pages/DonorRegister";
 import NGORegister from "../pages/NGORegister";
+import About from "../pages/About";
+import NGOs from "../pages/NGOs";
 
 import DonorDashboard from "../pages/DonorDashboard";
 import NGODashboard from "../pages/NGODashboard";
 import AdminDashboard from "../pages/AdminDashboard";
 
 import ProtectedRoute from "./ProtectedRoute";
+import ScrollToTop from "../components/ScrollToTop";
+import ReloadToHome from "../components/ReloadToHome";
+
 
 function AppRoutes() {
+
   return (
+
     <BrowserRouter>
+
+      <ReloadToHome />
+      <ScrollToTop />
 
       <Routes>
 
         <Route element={<MainLayout />}>
 
-          {/* PUBLIC ROUTES */}
+
+          {/* ================= PUBLIC ROUTES ================= */}
 
           <Route
             path="/"
             element={<Home />}
+          />
+
+          <Route
+            path="/about"
+            element={<About />}
+          />
+
+          <Route
+            path="/ngos"
+            element={<NGOs />}
           />
 
           <Route
@@ -50,7 +71,7 @@ function AppRoutes() {
           />
 
 
-          {/* DONOR DASHBOARD */}
+          {/* ================= DONOR DASHBOARD ================= */}
 
           <Route
             path="/donor-dashboard"
@@ -62,7 +83,7 @@ function AppRoutes() {
           />
 
 
-          {/* NGO DASHBOARD */}
+          {/* ================= NGO DASHBOARD ================= */}
 
           <Route
             path="/ngo-dashboard"
@@ -74,7 +95,7 @@ function AppRoutes() {
           />
 
 
-          {/* ADMIN DASHBOARD */}
+          {/* ================= ADMIN DASHBOARD ================= */}
 
           <Route
             path="/admin-dashboard"
@@ -90,7 +111,9 @@ function AppRoutes() {
       </Routes>
 
     </BrowserRouter>
+
   );
 }
+
 
 export default AppRoutes;

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 
+function Navbar() {
 
-function Navbar(){
+  return (
 
-  return(
     <nav className="navbar">
 
+      {/* LOGO */}
 
       <Link to="/" className="logo">
         FoodBridge 🌱
@@ -14,54 +15,49 @@ function Navbar(){
 
       <div className="nav-links">
 
+        {/* HOME */}
 
         <Link to="/">
           Home
         </Link>
 
 
-        <Link to="/donate">
-          Donate
-        </Link>
-
+        {/* NGOS */}
 
         <Link to="/ngos">
           NGOs
         </Link>
 
 
+        {/* ABOUT */}
+
         <Link to="/about">
           About
         </Link>
 
 
+        {/* LOGIN */}
 
         <Link to="/login">
-
           <button className="login-btn">
             Login
           </button>
-
         </Link>
 
 
+        {/* REGISTER */}
 
         <Link to="/register">
-
           <button className="register-btn">
             Register
           </button>
-
         </Link>
-
 
       </div>
 
-
     </nav>
-  )
 
+  );
 }
-
 
 export default Navbar;
