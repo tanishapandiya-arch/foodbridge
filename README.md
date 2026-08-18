@@ -2,9 +2,7 @@
 
 > **Reducing Food Waste. Connecting Communities. Creating Impact.**
 
-FoodBridge is a full-stack food donation platform that connects people
-with surplus food to **verified NGOs**. The platform makes food donation
-simple, organized, and transparent while helping reduce food wastage.
+FoodBridge is a full-stack food donation platform that connects people with surplus food to **verified NGOs**. The platform makes food donation simple, organized, and transparent while helping reduce food wastage.
 
 ---
 
@@ -45,7 +43,7 @@ Verified NGO
 Claims Food
   ↓
 Donation Completed 🌱
-🛠️ Tech Stack
+##🛠️ Tech Stack
 
 Frontend: React.js · Vite · React Router · JavaScript · CSS
 
@@ -56,12 +54,12 @@ Database: MongoDB · MongoDB Atlas · Mongoose
 Tools: VS Code · Git · GitHub · REST Client
 
 🔐 Security
-JWT-based authentication
-Password hashing with bcrypt
-Protected routes
-Role-based authorization
-Verified NGO access
-Environment variables for sensitive credentials
+🔑 JWT-based authentication
+🔒 Password hashing with bcrypt
+🛡️ Protected routes
+👥 Role-based authorization
+✅ Verified NGO access
+🔐 Environment variables for sensitive credentials
 📁 Project Structure
 Food Donation Platform/
 │
@@ -86,19 +84,22 @@ cd backend
 npm install
 npm run dev
 
-Runs on:
+Backend runs on:
 
 http://localhost:5000
+
 Frontend
 cd foodbridge
 npm install
 npm run dev
 
-Runs on:
+Frontend runs on:
 
 http://localhost:5173
 
-Create a .env file in the backend:
+Environment Variables
+
+Create a .env file inside the backend folder:
 
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
@@ -116,9 +117,8 @@ PORT=5000
 📱 Better mobile experience
 ☁️ Production deployment
 👩‍💻 Developer
-
 Tanisha Pandiya
 
-Built with ❤️ using React, Node.js, Express.js & MongoDB
+Built with ❤️ using React, Node.js, Express.js & MongoDB.
 
 ⭐ Food that can help someone shouldn't go to waste.
