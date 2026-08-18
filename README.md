@@ -43,24 +43,33 @@ Verified NGO
 Claims Food
   ↓
 Donation Completed 🌱
-##🛠️ Tech Stack
+```
+## 🛠️ Tech Stack
 
-Frontend: React.js · Vite · React Router · JavaScript · CSS
+| Layer | Technologies |
+|---|---|
+| **Frontend** | React.js, Vite, React Router, JavaScript, CSS |
+| **Backend** | Node.js, Express.js, REST API |
+| **Authentication** | JWT, bcrypt |
+| **Database** | MongoDB, MongoDB Atlas, Mongoose |
+| **Tools** | VS Code, Git, GitHub, REST Client |
 
-Backend: Node.js · Express.js · REST API · JWT · bcrypt
+---
 
-Database: MongoDB · MongoDB Atlas · Mongoose
+## 🔐 Security
 
-Tools: VS Code · Git · GitHub · REST Client
+- 🔑 JWT-based authentication
+- 🔒 Password hashing with bcrypt
+- 🛡️ Protected routes
+- 👥 Role-based authorization
+- ✅ Verified NGO access
+- 🔐 Environment variables for sensitive credentials
 
-🔐 Security
-🔑 JWT-based authentication
-🔒 Password hashing with bcrypt
-🛡️ Protected routes
-👥 Role-based authorization
-✅ Verified NGO access
-🔐 Environment variables for sensitive credentials
-📁 Project Structure
+---
+
+## 📁 Project Structure
+
+```text
 Food Donation Platform/
 │
 ├── backend/
@@ -78,47 +87,6 @@ Food Donation Platform/
         ├── routes/
         ├── services/
         └── styles/
-🚀 Run Locally
-Backend
-cd backend
-npm install
-npm run dev
-
-Backend runs on:
-
-http://localhost:5000
-
-Frontend
-cd foodbridge
-npm install
-npm run dev
-
-Frontend runs on:
-
-http://localhost:5173
-
-Environment Variables
-
-Create a .env file inside the backend folder:
-
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-PORT=5000
-
-⚠️ Never commit your .env file or secret credentials to GitHub.
-
-🔮 Future Scope
-📍 Location & map integration
-📸 Food image uploads
-🔔 Notifications
-📧 Email notifications
-🔎 Food search & filtering
-📊 Admin analytics
-📱 Better mobile experience
-☁️ Production deployment
-👩‍💻 Developer
-Tanisha Pandiya
-
-Built with ❤️ using React, Node.js, Express.js & MongoDB.
 
 ⭐ Food that can help someone shouldn't go to waste.
+```
