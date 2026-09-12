@@ -88,7 +88,7 @@ npm run dev
 
 Runs on:
 
-http://localhost:5000
+https://foodbridge-lcqd.onrender.com
 Frontend
 cd foodbridge
 npm install

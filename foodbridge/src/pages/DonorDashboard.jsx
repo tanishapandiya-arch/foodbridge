@@ -21,7 +21,7 @@ function DonorDashboard() {
   const fetchMyFoods = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/food/my-food",
+        "https://foodbridge-lcqd.onrender.com/api/food/my-food",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -55,7 +55,7 @@ function DonorDashboard() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/food",
+        "https://foodbridge-lcqd.onrender.com/api/food",
         {
           method: "POST",
           headers: {
