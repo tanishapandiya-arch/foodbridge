@@ -1,62 +1,74 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "../styles/navbar.css";
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem("token")
+  );
+
+  useEffect(() => {
+    const updateAuth = () => {
+      setIsLoggedIn(!!localStorage.getItem("token"));
+    };
+
+    window.addEventListener("authChange", updateAuth);
+
+    return () => {
+      window.removeEventListener("authChange", updateAuth);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    setIsLoggedIn(false);
+
+    window.dispatchEvent(new Event("authChange"));
+
+    navigate("/");
+  };
 
   return (
-
     <nav className="navbar">
 
-      {/* LOGO */}
-
       <Link to="/" className="logo">
-        FoodBridge 🌱
+        FoodBridge <span>🌱</span>
       </Link>
-
 
       <div className="nav-links">
 
-        {/* HOME */}
+        <Link to="/">Home</Link>
 
-        <Link to="/">
-          Home
-        </Link>
+        <Link to="/ngos">NGOs</Link>
 
+        <Link to="/about">About</Link>
 
-        {/* NGOS */}
+        {!isLoggedIn ? (
+          <>
+            <Link to="/login" className="nav-login">
+              Login
+            </Link>
 
-        <Link to="/ngos">
-          NGOs
-        </Link>
-
-
-        {/* ABOUT */}
-
-        <Link to="/about">
-          About
-        </Link>
-
-
-        {/* LOGIN */}
-
-        <Link to="/login">
-          <button className="login-btn">
-            Login
+            <Link to="/register" className="nav-register">
+              Register
+            </Link>
+          </>
+        ) : (
+          <button
+            className="nav-logout"
+            onClick={handleLogout}
+          >
+            Logout
           </button>
-        </Link>
-
-
-        {/* REGISTER */}
-
-        <Link to="/register">
-          <button className="register-btn">
-            Register
-          </button>
-        </Link>
+        )}
 
       </div>
 
     </nav>
-
   );
 }
 

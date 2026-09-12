@@ -1,0 +1,100 @@
+.ngos-page {
+  min-height: calc(100vh - 140px);
+  padding: 60px 6%;
+  background: #faf7f0;
+  box-sizing: border-box;
+}
+
+.ngos-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.ngos-container h1 {
+  margin: 0 0 15px;
+  color: #1b4332;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.ngos-intro {
+  max-width: 900px;
+  margin: 0 0 45px;
+  color: #617084;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.ngos-section {
+  margin-bottom: 35px;
+  padding: 28px 30px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(27, 67, 50, 0.07);
+}
+
+.ngos-section h2 {
+  margin: 0 0 15px;
+  color: #1b4332;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.ngos-section p {
+  margin: 0;
+  color: #536170;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.ngos-section ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.ngos-section li {
+  margin-bottom: 10px;
+  color: #536170;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.ngos-section li:last-child {
+  margin-bottom: 0;
+}
+
+.goal-section {
+  background: #edf8f0;
+  border-color: #d4ead9;
+}
+
+.goal-section p {
+  color: #1b4332;
+  font-size: 17px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .ngos-page {
+    padding: 40px 20px;
+  }
+
+  .ngos-container h1 {
+    font-size: 32px;
+  }
+
+  .ngos-intro {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .ngos-section {
+    padding: 22px;
+    margin-bottom: 22px;
+  }
+
+  .ngos-section h2 {
+    font-size: 22px;
+  }
+}

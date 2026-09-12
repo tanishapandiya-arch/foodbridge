@@ -1,34 +1,23 @@
 import { useEffect, useState } from "react";
-import LogoutButton from "../components/LogoutButton";
+import "../styles/dashboard.css";
 
 function NGODashboard() {
-
   const [foods, setFoods] = useState([]);
   const [claimedFoods, setClaimedFoods] = useState([]);
 
   const [loading, setLoading] = useState(true);
-  const [claimedLoading, setClaimedLoading] = useState(true);
-
   const [error, setError] = useState("");
-  const [claimedError, setClaimedError] = useState("");
-
-  const [claimingId, setClaimingId] = useState("");
 
   const token = localStorage.getItem("token");
 
-
-  // ==================== GET AVAILABLE FOODS ====================
-
   const fetchFoods = async () => {
-
     try {
-
       const response = await fetch(
         "http://localhost:5000/api/food",
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
@@ -36,37 +25,27 @@ function NGODashboard() {
 
       if (!response.ok) {
         throw new Error(
-          data.message || "Failed to fetch food posts"
+          data.message || "Failed to fetch foods"
         );
       }
 
       setFoods(data.foods);
-
     } catch (error) {
-
       console.log(error);
       setError(error.message);
-
     } finally {
-
       setLoading(false);
-
     }
   };
 
-
-  // ==================== GET CLAIMED FOODS ====================
-
   const fetchClaimedFoods = async () => {
-
     try {
-
       const response = await fetch(
         "http://localhost:5000/api/food/claimed-food",
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
@@ -79,35 +58,20 @@ function NGODashboard() {
       }
 
       setClaimedFoods(data.foods);
-
     } catch (error) {
-
       console.log(error);
-      setClaimedError(error.message);
-
-    } finally {
-
-      setClaimedLoading(false);
-
     }
   };
 
-
-  // ==================== CLAIM FOOD ====================
-
   const handleClaim = async (foodId) => {
-
-    setClaimingId(foodId);
-
     try {
-
       const response = await fetch(
         `http://localhost:5000/api/food/${foodId}/claim`,
         {
           method: "PATCH",
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
@@ -121,251 +85,237 @@ function NGODashboard() {
 
       alert("Food claimed successfully! 🎉");
 
-      // Refresh both sections
       fetchFoods();
       fetchClaimedFoods();
-
     } catch (error) {
-
       console.log(error);
       alert(error.message);
-
-    } finally {
-
-      setClaimingId("");
-
     }
   };
 
-
-  // ==================== LOAD DATA ====================
-
   useEffect(() => {
-
     fetchFoods();
     fetchClaimedFoods();
-
   }, []);
 
-
-  // ==================== UI ====================
+  const availableFoods = foods.filter(
+    (food) => food.status !== "claimed"
+  );
 
   return (
+    <div className="dashboard-page">
+      <div className="dashboard-container">
 
-    <div style={{ padding: "30px" }}>
+        {/* HEADER */}
+        <div className="dashboard-header">
+          <div className="dashboard-title">
+            <h1>NGO Dashboard 🤝</h1>
+            <p>
+              Find available food donations and help your community.
+            </p>
+          </div>
+        </div>
 
-      {/* ==================== HEADER ==================== */}
+        {/* ERROR */}
+        {error && (
+          <div className="dashboard-alert dashboard-error">
+            {error}
+          </div>
+        )}
 
-      <h1>
-        NGO Dashboard 🤝
-      </h1>
+        {/* STATS */}
+        <div className="dashboard-stats">
 
-      <p>
-        Welcome to FoodBridge 🌱
-      </p>
+          <div className="dashboard-card stat-card">
+            <span className="stat-label">
+              Available Food
+            </span>
+            <strong>{availableFoods.length}</strong>
+          </div>
 
-      <LogoutButton />
+          <div className="dashboard-card stat-card">
+            <span className="stat-label">
+              My Claimed Food
+            </span>
+            <strong>{claimedFoods.length}</strong>
+          </div>
 
-
-      {/* ==================== AVAILABLE FOOD ==================== */}
-
-      <h2 style={{ marginTop: "40px" }}>
-        Available Food
-      </h2>
-
-
-      {loading && (
-        <p>
-          Loading food posts...
-        </p>
-      )}
-
-
-      {error && (
-        <p style={{ color: "red" }}>
-          {error}
-        </p>
-      )}
-
-
-      {!loading && !error && foods.length === 0 && (
-        <p>
-          No food posts available.
-        </p>
-      )}
-
-
-      {!loading && !error && foods.length > 0 && (
-
-        <div>
-
-          {foods.map((food) => (
-
-            <div
-              key={food._id}
-              style={{
-                border: "1px solid #ddd",
-                padding: "20px",
-                margin: "15px 0",
-                borderRadius: "10px"
-              }}
-            >
-
-              <h3>
-                {food.foodType}
-              </h3>
-
-              <p>
-                Quantity: {food.quantity}
-              </p>
-
-              <p>
-                Description: {food.description}
-              </p>
-
-              <p>
-                Pickup: {food.pickupTime}
-              </p>
-
-              <p>
-                Location: {food.location}
-              </p>
-
-              <p>
-                Status:{" "}
-                <strong>
-                  {food.status}
-                </strong>
-              </p>
-
-
-              {food.donor && (
-
-                <p>
-                  Donor: {food.donor.name}
-                </p>
-
-              )}
-
-
-              {food.status === "available" && (
-
-                <button
-                  onClick={() => handleClaim(food._id)}
-                  disabled={claimingId === food._id}
-                  style={{
-                    padding: "10px 20px",
-                    cursor: "pointer"
-                  }}
-                >
-
-                  {claimingId === food._id
-                    ? "Claiming..."
-                    : "Claim Food"
-                  }
-
-                </button>
-
-              )}
-
-            </div>
-
-          ))}
+          <div className="dashboard-card stat-card">
+            <span className="stat-label">
+              Total Donations
+            </span>
+            <strong>{foods.length}</strong>
+          </div>
 
         </div>
 
-      )}
+        {/* AVAILABLE FOOD */}
+        <section className="dashboard-section">
 
-
-      {/* ==================== CLAIMED FOODS ==================== */}
-
-      <h2 style={{ marginTop: "50px" }}>
-        My Claimed Foods
-      </h2>
-
-
-      {claimedLoading && (
-        <p>
-          Loading claimed foods...
-        </p>
-      )}
-
-
-      {claimedError && (
-        <p style={{ color: "red" }}>
-          {claimedError}
-        </p>
-      )}
-
-
-      {!claimedLoading &&
-        !claimedError &&
-        claimedFoods.length === 0 && (
-
-          <p>
-            You haven't claimed any food yet.
-          </p>
-
-        )
-      }
-
-
-      {!claimedLoading &&
-        !claimedError &&
-        claimedFoods.length > 0 && (
-
-          <div>
-
-            {claimedFoods.map((food) => (
-
-              <div
-                key={food._id}
-                style={{
-                  border: "1px solid #ddd",
-                  padding: "20px",
-                  margin: "15px 0",
-                  borderRadius: "10px"
-                }}
-              >
-
-                <h3>
-                  {food.foodType}
-                </h3>
-
-                <p>
-                  Quantity: {food.quantity}
-                </p>
-
-                <p>
-                  Description: {food.description}
-                </p>
-
-                <p>
-                  Pickup: {food.pickupTime}
-                </p>
-
-                <p>
-                  Location: {food.location}
-                </p>
-
-                <p>
-                  Status:{" "}
-                  <strong>
-                    {food.status}
-                  </strong>
-                </p>
-
-              </div>
-
-            ))}
-
+          <div className="section-heading">
+            <div>
+              <h2>🍱 Available Food</h2>
+              <p>
+                Browse food donations available for your NGO.
+              </p>
+            </div>
           </div>
 
-        )
-      }
+          {loading ? (
+            <div className="dashboard-card empty-state">
+              Loading available food...
+            </div>
+          ) : availableFoods.length === 0 ? (
+            <div className="dashboard-card empty-state">
+              <h3>No food donations available</h3>
+              <p>
+                New food donations will appear here.
+              </p>
+            </div>
+          ) : (
+            <div className="food-grid">
 
+              {availableFoods.map((food) => (
+                <div
+                  className="dashboard-card food-card"
+                  key={food._id}
+                >
+
+                  <div className="food-card-header">
+
+                    <h3>
+                      🍚 {food.foodType}
+                    </h3>
+
+                    <span className="status-badge status-available">
+                      Available
+                    </span>
+
+                  </div>
+
+                  <div className="food-info">
+
+                    <span>
+                      👥 <strong>Quantity:</strong>{" "}
+                      {food.quantity}
+                    </span>
+
+                    <span>
+                      📝 <strong>Description:</strong>{" "}
+                      {food.description || "No description"}
+                    </span>
+
+                    <span>
+                      🕐 <strong>Pickup:</strong>{" "}
+                      {food.pickupTime}
+                    </span>
+
+                    <span>
+                      📍 <strong>Location:</strong>{" "}
+                      {food.location}
+                    </span>
+
+                    {food.donor && (
+                      <span>
+                        👤 <strong>Donor:</strong>{" "}
+                        {food.donor.name}
+                      </span>
+                    )}
+
+                  </div>
+
+                  <button
+                    className="dashboard-primary-btn claim-btn"
+                    onClick={() =>
+                      handleClaim(food._id)
+                    }
+                  >
+                    Claim Food
+                  </button>
+
+                </div>
+              ))}
+
+            </div>
+          )}
+
+        </section>
+
+        {/* CLAIMED FOOD */}
+        <section className="dashboard-section">
+
+          <div className="section-heading">
+            <div>
+              <h2>✅ My Claimed Foods</h2>
+              <p>
+                Food donations claimed by your NGO.
+              </p>
+            </div>
+          </div>
+
+          {claimedFoods.length === 0 ? (
+
+            <div className="dashboard-card empty-state">
+              <h3>No claimed food yet</h3>
+              <p>
+                Foods claimed by your NGO will appear here.
+              </p>
+            </div>
+
+          ) : (
+
+            <div className="food-grid">
+
+              {claimedFoods.map((food) => (
+
+                <div
+                  className="dashboard-card food-card"
+                  key={food._id}
+                >
+
+                  <div className="food-card-header">
+
+                    <h3>
+                      🍚 {food.foodType}
+                    </h3>
+
+                    <span className="status-badge status-claimed">
+                      Claimed
+                    </span>
+
+                  </div>
+
+                  <div className="food-info">
+
+                    <span>
+                      👥 <strong>Quantity:</strong>{" "}
+                      {food.quantity}
+                    </span>
+
+                    <span>
+                      🕐 <strong>Pickup:</strong>{" "}
+                      {food.pickupTime}
+                    </span>
+
+                    <span>
+                      📍 <strong>Location:</strong>{" "}
+                      {food.location}
+                    </span>
+
+                  </div>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          )}
+
+        </section>
+
+      </div>
     </div>
-
   );
 }
 

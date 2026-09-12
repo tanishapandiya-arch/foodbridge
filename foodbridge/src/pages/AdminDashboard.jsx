@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import LogoutButton from "../components/LogoutButton";
-
+import "../styles/dashboard.css";
 
 function AdminDashboard() {
   const [ngos, setNgos] = useState([]);
@@ -9,29 +8,24 @@ function AdminDashboard() {
 
   const token = localStorage.getItem("token");
 
-  // ==================== GET ALL NGOS ====================
-
   const fetchNGOs = async () => {
     try {
       const response = await fetch(
         "http://localhost:5000/api/admin/ngos",
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          data.message || "Failed to fetch NGOs"
-        );
+        throw new Error(data.message || "Failed to fetch NGOs");
       }
 
       setNgos(data.ngos);
-
     } catch (error) {
       console.log(error);
       setError(error.message);
@@ -40,9 +34,6 @@ function AdminDashboard() {
     }
   };
 
-
-  // ==================== VERIFY NGO ====================
-
   const handleVerify = async (ngoId) => {
     try {
       const response = await fetch(
@@ -50,148 +41,155 @@ function AdminDashboard() {
         {
           method: "PATCH",
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          data.message || "Failed to verify NGO"
-        );
+        throw new Error(data.message || "Failed to verify NGO");
       }
 
       alert("NGO verified successfully! ✅");
 
-      // Refresh NGO list
       fetchNGOs();
-
     } catch (error) {
       console.log(error);
       alert(error.message);
     }
   };
 
-
-  // ==================== LOAD NGOS ====================
-
   useEffect(() => {
     fetchNGOs();
   }, []);
 
-
-  // ==================== LOADING ====================
-
   if (loading) {
     return (
-      <div style={{ padding: "40px" }}>
-        <h2>Loading Admin Dashboard...</h2>
+      <div className="dashboard-page">
+        <div className="dashboard-container">
+          <div className="dashboard-card dashboard-loading">
+            <h2>Loading Admin Dashboard...</h2>
+          </div>
+        </div>
       </div>
     );
   }
 
-
-  // ==================== UI ====================
-
   return (
-    <div style={{ padding: "40px" }}>
+    <div className="dashboard-page">
+      <div className="dashboard-container">
 
-      <h1>
-        Admin Dashboard 👑
-      </h1>
- <LogoutButton />
-      <p>
-        Manage and verify FoodBridge NGOs.
-      </p>
-
-
-      {/* ERROR */}
-
-      {error && (
-        <p style={{ color: "red" }}>
-          {error}
-        </p>
-      )}
-
-
-      {/* ==================== NGO LIST ==================== */}
-
-      <h2 style={{ marginTop: "40px" }}>
-        Registered NGOs
-      </h2>
-
-
-      {ngos.length === 0 ? (
-        <p>
-          No NGOs registered yet.
-        </p>
-      ) : (
-
-        ngos.map((ngo) => (
-
-          <div
-            key={ngo._id}
-            style={{
-              border: "1px solid #ddd",
-              padding: "20px",
-              marginTop: "20px",
-              borderRadius: "10px"
-            }}
-          >
-
-            <h3>
-              {ngo.name}
-            </h3>
-
+        {/* HEADER */}
+        <div className="dashboard-header">
+          <div className="dashboard-title">
+            <h1>Admin Dashboard 👑</h1>
             <p>
-              <strong>Email:</strong>{" "}
-              {ngo.email}
+              Manage and verify registered NGOs on FoodBridge.
             </p>
+          </div>
+        </div>
 
-            <p>
-              <strong>Role:</strong>{" "}
-              {ngo.role}
-            </p>
+        {/* ERROR */}
+        {error && (
+          <div className="dashboard-alert dashboard-error">
+            {error}
+          </div>
+        )}
 
-
-            <p>
-              <strong>Status:</strong>{" "}
-
-              {ngo.isVerified ? (
-                <span style={{ color: "green" }}>
-                  Verified ✅
-                </span>
-              ) : (
-                <span style={{ color: "orange" }}>
-                  Not Verified
-                </span>
-              )}
-
-            </p>
-
-
-            {!ngo.isVerified && (
-
-              <button
-                onClick={() => handleVerify(ngo._id)}
-                style={{
-                  padding: "10px 20px",
-                  cursor: "pointer"
-                }}
-              >
-                Verify NGO
-              </button>
-
-            )}
-
+        {/* STATS */}
+        <div className="dashboard-stats">
+          <div className="dashboard-card stat-card">
+            <span className="stat-label">Total NGOs</span>
+            <strong>{ngos.length}</strong>
           </div>
 
-        ))
+          <div className="dashboard-card stat-card">
+            <span className="stat-label">Verified NGOs</span>
+            <strong>
+              {ngos.filter((ngo) => ngo.isVerified).length}
+            </strong>
+          </div>
 
-      )}
+          <div className="dashboard-card stat-card">
+            <span className="stat-label">Pending Verification</span>
+            <strong>
+              {ngos.filter((ngo) => !ngo.isVerified).length}
+            </strong>
+          </div>
+        </div>
 
+        {/* NGO SECTION */}
+        <section className="dashboard-section">
+          <div className="section-heading">
+            <div>
+              <h2>Registered NGOs</h2>
+              <p>Review and verify NGO accounts.</p>
+            </div>
+          </div>
+
+          {ngos.length === 0 ? (
+            <div className="dashboard-card empty-state">
+              <h3>No NGOs registered yet.</h3>
+              <p>
+                Registered NGOs will appear here for verification.
+              </p>
+            </div>
+          ) : (
+            <div className="ngo-grid">
+              {ngos.map((ngo) => (
+                <div className="dashboard-card ngo-card" key={ngo._id}>
+
+                  <div className="ngo-card-top">
+                    <div className="ngo-icon">🏢</div>
+
+                    <span
+                      className={`status-badge ${
+                        ngo.isVerified
+                          ? "status-verified"
+                          : "status-pending"
+                      }`}
+                    >
+                      {ngo.isVerified
+                        ? "Verified"
+                        : "Pending"}
+                    </span>
+                  </div>
+
+                  <h3>{ngo.name}</h3>
+
+                  <div className="ngo-details">
+                    <p>
+                      <span>Email</span>
+                      {ngo.email}
+                    </p>
+
+                    <p>
+                      <span>Role</span>
+                      {ngo.role}
+                    </p>
+                  </div>
+
+                  {ngo.isVerified ? (
+                    <div className="verified-message">
+                      ✓ This NGO is verified
+                    </div>
+                  ) : (
+                    <button
+                      className="dashboard-primary-btn verify-btn"
+                      onClick={() => handleVerify(ngo._id)}
+                    >
+                      Verify NGO
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+
+      </div>
     </div>
   );
 }

@@ -1,44 +1,110 @@
+import "../styles/about.css";
+
 function About() {
   return (
-    <div style={{ padding: "50px 8%", lineHeight: "1.7" }}>
+    <div className="about-page">
+      <div className="about-container">
 
-      <h1>About FoodBridge 🌱</h1>
+        <div className="about-hero">
+          <h1>About FoodBridge 🌱</h1>
 
-      <p>
-        FoodBridge is a food donation platform that connects people
-        and organizations having surplus food with verified NGOs.
-      </p>
+          <p>
+            FoodBridge is a food donation platform that connects surplus
+            food donors with verified NGOs, helping reduce food waste
+            and support communities in need.
+          </p>
+        </div>
 
-      <h2>Our Mission</h2>
+        <section className="about-section">
+          <h2>Our Mission 🤝</h2>
 
-      <p>
-        Our mission is to reduce food waste and make surplus food
-        available to people who need it.
-      </p>
+          <p>
+            Every day, usable food is wasted while many communities
+            face food insecurity. FoodBridge aims to bridge this gap by
+            making food donation simple, transparent and accessible.
+          </p>
+        </section>
 
-      <h2>How FoodBridge Works</h2>
+        <section className="about-section">
+          <h2>How FoodBridge Works 🍱</h2>
 
-      <ol>
-        <li>Donors post details about their surplus food.</li>
-        <li>Verified NGOs can view available food.</li>
-        <li>NGOs claim the food they need.</li>
-        <li>The donor can track the status of their food donation.</li>
-      </ol>
+          <div className="about-cards">
 
-      <h2>Why FoodBridge?</h2>
+            <div className="about-card">
+              <div className="about-icon">🍚</div>
+              <h3>Donors</h3>
+              <p>
+                Donors can post details about their surplus food,
+                quantity, pickup time and location.
+              </p>
+            </div>
 
-      <p>
-        Every day, usable food is wasted while many people struggle
-        to get enough food. FoodBridge aims to bridge this gap by
-        providing a simple platform for food donors and NGOs.
-      </p>
+            <div className="about-card">
+              <div className="about-icon">🤝</div>
+              <h3>Verified NGOs</h3>
+              <p>
+                Verified NGOs can browse available donations and
+                claim food suitable for their organization.
+              </p>
+            </div>
 
-      <h2>Our Vision</h2>
+            <div className="about-card">
+              <div className="about-icon">🌱</div>
+              <h3>Social Impact</h3>
+              <p>
+                By connecting surplus food with organizations that
+                need it, FoodBridge helps reduce unnecessary food waste.
+              </p>
+            </div>
 
-      <p>
-        A future where surplus food is shared instead of wasted.
-      </p>
+          </div>
+        </section>
 
+        <section className="about-section">
+          <h2>Why FoodBridge? 💚</h2>
+
+          <div className="about-points">
+            <div>
+              <strong>♻️ Reduce Food Waste</strong>
+              <p>
+                Give surplus food a meaningful purpose instead of
+                letting it go to waste.
+              </p>
+            </div>
+
+            <div>
+              <strong>🔐 Trusted Network</strong>
+              <p>
+                NGO verification helps create a safer and more
+                reliable donation ecosystem.
+              </p>
+            </div>
+
+            <div>
+              <strong>📋 Simple & Transparent</strong>
+              <p>
+                Clear food details make the donation and claiming
+                process easier for everyone.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="about-goal">
+          <h2>Our Goal 🌍</h2>
+
+          <p>
+            <strong>
+              Turn surplus food into meaningful impact.
+            </strong>
+          </p>
+
+          <span>
+            Reduce waste • Support communities • Build a better future
+          </span>
+        </section>
+
+      </div>
     </div>
   );
 }

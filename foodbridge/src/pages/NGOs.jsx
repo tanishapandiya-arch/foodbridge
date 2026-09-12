@@ -1,47 +1,61 @@
+import "../styles/ngos.css";
+
 function NGOs() {
   return (
-    <div style={{ padding: "50px 8%", lineHeight: "1.7" }}>
+    <div className="ngos-page">
+      <div className="ngos-container">
 
-      <h1>NGOs & Donations 🤝</h1>
+        <h1>FoodBridge for NGOs 🤝</h1>
 
-      <p>
-        FoodBridge connects food donors with verified NGOs so that
-        surplus food can be put to better use instead of being wasted.
-      </p>
+        <p className="ngos-intro">
+          FoodBridge helps verified NGOs access surplus food donations
+          from individuals, restaurants, hostels, events and other donors —
+          making food recovery simple and transparent.
+        </p>
 
-      <h2>For Donors</h2>
+        <section className="ngos-section">
+          <h2>For NGOs 🍱</h2>
 
-      <ul>
-        <li>Post your surplus food.</li>
-        <li>Add quantity, description and pickup details.</li>
-        <li>Track whether your food is available or claimed.</li>
-      </ul>
+          <ul>
+            <li>Register your NGO on FoodBridge.</li>
+            <li>Get verified by an admin to join the trusted donation network.</li>
+            <li>Browse available food donations shared by donors.</li>
+            <li>Claim suitable food donations for your organization.</li>
+            <li>Track your claimed donations from your dashboard.</li>
+          </ul>
+        </section>
 
-      <h2>For NGOs</h2>
+        <section className="ngos-section">
+          <h2>Why Verification Matters 🔐</h2>
 
-      <ul>
-        <li>Register your NGO on FoodBridge.</li>
-        <li>Wait for admin verification.</li>
-        <li>View available food after verification.</li>
-        <li>Claim food that can be used by your organization.</li>
-        <li>View your claimed food from your dashboard.</li>
-      </ul>
+          <p>
+            Only verified NGOs can access and claim food donations.
+            This helps prevent misuse and keeps the platform safe,
+            reliable and trustworthy for both donors and NGOs.
+          </p>
+        </section>
 
-      <h2>Verification Matters 🔐</h2>
+        <section className="ngos-section">
+          <h2>How FoodBridge Helps 🌱</h2>
 
-      <p>
-        Only verified NGOs can access available food and claim
-        donations. This helps keep the platform reliable and
-        trustworthy.
-      </p>
+          <p>
+            FoodBridge connects surplus food with organizations that
+            can put it to meaningful use — helping reduce food waste
+            while supporting communities in need.
+          </p>
+        </section>
 
-      <h2>Our Goal</h2>
+        <section className="ngos-section goal-section">
+          <h2>Our Goal 💚</h2>
 
-      <p>
-        We want to make food donation simple, transparent and
-        accessible while helping reduce unnecessary food waste.
-      </p>
+          <p>
+            <strong>
+              Reduce food waste. Support communities. Create impact.
+            </strong>
+          </p>
+        </section>
 
+      </div>
     </div>
   );
 }

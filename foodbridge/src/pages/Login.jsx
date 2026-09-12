@@ -50,6 +50,13 @@ function Login() {
       );
 
 
+      // ==================== UPDATE NAVBAR ====================
+
+      window.dispatchEvent(
+        new Event("authChange")
+      );
+
+
       alert("Login successful!");
 
 
@@ -101,7 +108,6 @@ function Login() {
 
       <div className="auth-card">
 
-
         {/* LOGO */}
 
         <div className="auth-logo">
@@ -124,7 +130,6 @@ function Login() {
         {/* LOGIN FORM */}
 
         <form onSubmit={handleLogin}>
-
 
           {/* EMAIL */}
 
@@ -199,7 +204,6 @@ function Login() {
 
           </button>
 
-
         </form>
 
 
@@ -217,7 +221,6 @@ function Login() {
           </span>
 
         </p>
-
 
       </div>
 

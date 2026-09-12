@@ -1,0 +1,498 @@
+/* =========================================
+   FOODBRIDGE DASHBOARDS
+   Admin + Donor + NGO
+========================================= */
+
+.dashboard-page {
+  width: 100%;
+  min-height: calc(100vh - 140px);
+  padding: 50px 6%;
+  background: #faf7f0;
+  box-sizing: border-box;
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-title h1 {
+  margin: 0 0 10px;
+  color: #1b4332;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.dashboard-title p {
+  margin: 0;
+  color: #617084;
+  font-size: 16px;
+}
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.dashboard-section {
+  margin-top: 42px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.section-heading h2,
+.dashboard-section > h2 {
+  margin: 0 0 7px;
+  color: #1b4332;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #617084;
+  font-size: 15px;
+}
+
+/* =========================================
+   COMMON CARD
+========================================= */
+
+.dashboard-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(27, 67, 50, 0.07);
+  box-sizing: border-box;
+}
+
+/* =========================================
+   STATS - ADMIN / NGO
+========================================= */
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+  margin-bottom: 45px;
+}
+
+.stat-card {
+  min-height: 120px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+}
+
+.stat-label {
+  color: #617084;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.stat-card strong {
+  color: #1b4332;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* =========================================
+   DONOR FORM
+========================================= */
+
+.form-card {
+  width: 100%;
+  padding: 30px;
+}
+
+.dashboard-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+}
+
+.dashboard-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dashboard-form-group.form-full {
+  grid-column: 1 / -1;
+}
+
+.dashboard-form-group label {
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dashboard-form-group input,
+.dashboard-form-group textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #d8e0da;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1f2937;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.dashboard-form-group input {
+  height: 46px;
+}
+
+.dashboard-form-group textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.dashboard-form-group input::placeholder,
+.dashboard-form-group textarea::placeholder {
+  color: #9aa5ae;
+}
+
+.dashboard-form-group input:focus,
+.dashboard-form-group textarea:focus {
+  border-color: #40916c;
+  box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.12);
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.dashboard-primary-btn {
+  margin-top: 24px;
+  padding: 13px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #1b4332;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.dashboard-primary-btn:hover {
+  background: #2d6a4f;
+  transform: translateY(-1px);
+}
+
+.dashboard-primary-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.claim-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* =========================================
+   FOOD GRID
+========================================= */
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+}
+
+/* =========================================
+   FOOD CARD
+========================================= */
+
+.food-card {
+  padding: 23px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.food-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.food-card-header h3 {
+  margin: 0;
+  color: #1b4332;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.food-info {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.food-info span {
+  color: #536170;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.food-info strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* =========================================
+   STATUS BADGES
+========================================= */
+
+.status-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-available {
+  background: #dff4e5;
+  color: #237342;
+}
+
+.status-claimed {
+  background: #fff0d5;
+  color: #996000;
+}
+
+.status-verified {
+  background: #d9f5df;
+  color: #1f7a3d;
+}
+
+.status-pending {
+  background: #fff0d5;
+  color: #a16207;
+}
+
+/* =========================================
+   NGO GRID / CARDS
+========================================= */
+
+.ngo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+}
+
+.ngo-card {
+  padding: 25px;
+}
+
+.ngo-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.ngo-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #eaf5ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+
+.ngo-card h3 {
+  margin: 0 0 18px;
+  color: #1f2937;
+  font-size: 20px;
+}
+
+.ngo-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ngo-details p {
+  margin: 0;
+  color: #374151;
+  font-size: 14px;
+}
+
+.ngo-details p span {
+  display: block;
+  margin-bottom: 3px;
+  color: #7a8794;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.verify-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* =========================================
+   ALERTS
+========================================= */
+
+.dashboard-alert {
+  width: 100%;
+  padding: 13px 16px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.dashboard-error {
+  background: #fff1f1;
+  border: 1px solid #ffd3d3;
+  color: #b42318;
+}
+
+.dashboard-success {
+  background: #edf8f0;
+  border: 1px solid #ccebd3;
+  color: #267044;
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-state {
+  width: 100%;
+  padding: 40px 25px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+  color: #1b4332;
+  font-size: 18px;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #718096;
+  font-size: 14px;
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+.dashboard-loading {
+  padding: 45px;
+  text-align: center;
+}
+
+.dashboard-loading h2 {
+  margin: 0;
+  color: #1b4332;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+  .food-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 750px) {
+  .dashboard-page {
+    padding: 35px 20px;
+  }
+
+  .dashboard-title h1 {
+    font-size: 32px;
+  }
+
+  .dashboard-header {
+    margin-bottom: 30px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-form-group.form-full {
+    grid-column: auto;
+  }
+
+  .food-grid,
+  .ngo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard-page {
+    padding: 28px 15px;
+  }
+
+  .dashboard-title h1 {
+    font-size: 28px;
+  }
+
+  .section-heading h2,
+  .dashboard-section > h2 {
+    font-size: 23px;
+  }
+}

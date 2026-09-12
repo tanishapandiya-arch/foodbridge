@@ -1,7 +1,42 @@
+import { useNavigate } from "react-router-dom";
 import HowItWorks from "../components/HowItWorks";
 import FoodCards from "../components/FoodCards";
 
 function Home() {
+  const navigate = useNavigate();
+
+  const handleDonateFood = () => {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!token || !user) {
+      navigate("/register/donor");
+      return;
+    }
+
+    if (user.role === "donor") {
+      navigate("/donor-dashboard");
+    } else {
+      alert("Only donors can post food donations.");
+    }
+  };
+
+  const handleFindFood = () => {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!token || !user) {
+      navigate("/register/ngo");
+      return;
+    }
+
+    if (user.role === "ngo") {
+      navigate("/ngo-dashboard");
+    } else {
+      alert("Only NGOs can find and claim food.");
+    }
+  };
+
   return (
     <>
       <section className="hero">
@@ -22,11 +57,17 @@ function Home() {
 
           <div className="hero-buttons">
 
-            <button className="primary-btn">
+            <button
+              className="primary-btn"
+              onClick={handleDonateFood}
+            >
               Donate Food
             </button>
 
-            <button className="secondary-btn">
+            <button
+              className="secondary-btn"
+              onClick={handleFindFood}
+            >
               Find Food
             </button>
 
