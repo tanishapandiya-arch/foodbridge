@@ -16,7 +16,6 @@ import AdminDashboard from "../pages/AdminDashboard";
 
 import ProtectedRoute from "./ProtectedRoute";
 import ScrollToTop from "../components/ScrollToTop";
-import ReloadToHome from "../components/ReloadToHome";
 
 
 function AppRoutes() {
@@ -25,7 +24,6 @@ function AppRoutes() {
 
     <BrowserRouter>
 
-      <ReloadToHome />
       <ScrollToTop />
 
       <Routes>
