@@ -1,4 +1,4 @@
-const API_URL = "https://foodbridge-lcqd.onrender.com/api";
+const API_URL = "https://foodbridge-backend-hhte.onrender.com/api";
 
 // ==================== SIGNUP ====================
 

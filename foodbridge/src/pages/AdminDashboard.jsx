@@ -11,7 +11,7 @@ function AdminDashboard() {
   const fetchNGOs = async () => {
     try {
       const response = await fetch(
-        "https://foodbridge-lcqd.onrender.com/api/admin/ngos",
+        "https://foodbridge-backend-hhte.onrender.com/api/admin/ngos",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -37,7 +37,7 @@ function AdminDashboard() {
   const handleVerify = async (ngoId) => {
     try {
       const response = await fetch(
-        `https://foodbridge-lcqd.onrender.com/api/admin/ngos/${ngoId}/verify`,
+        `https://foodbridge-backend-hhte.onrender.com/api/admin/ngos/${ngoId}/verify`,
         {
           method: "PATCH",
           headers: {

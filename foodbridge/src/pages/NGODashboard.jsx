@@ -13,7 +13,7 @@ function NGODashboard() {
   const fetchFoods = async () => {
     try {
       const response = await fetch(
-        "https://foodbridge-lcqd.onrender.com/api/food",
+        "https://foodbridge-backend-hhte.onrender.com/api/food",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -41,7 +41,7 @@ function NGODashboard() {
   const fetchClaimedFoods = async () => {
     try {
       const response = await fetch(
-        "https://foodbridge-lcqd.onrender.com /api/food/claimed-food",
+        "https://foodbridge-backend-hhte.onrender.com/api/food/claimed-food",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -66,7 +66,7 @@ function NGODashboard() {
   const handleClaim = async (foodId) => {
     try {
       const response = await fetch(
-        `https://foodbridge-lcqd.onrender.com/api/food/${foodId}/claim`,
+        `https://foodbridge-backend-hhte.onrender.com/api/food/${foodId}/claim`,
         {
           method: "PATCH",
           headers: {

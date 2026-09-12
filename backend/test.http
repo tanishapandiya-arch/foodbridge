@@ -1,6 +1,6 @@
 ### Signup
 
-POST https://foodbridge-lcqd.onrender.com/api/auth/signup
+POST https://https://foodbridge-backend-hhte.onrender.com/api/auth/signup
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 ### Login
 
-POST https://foodbridge-lcqd.onrender.com/api/auth/login
+POST https://https://foodbridge-backend-hhte.onrender.com/api/auth/login
 Content-Type: application/json
 
 {
@@ -20,11 +20,11 @@ Content-Type: application/json
 }
 ### Get Current User
 
-GET https://foodbridge-lcqd.onrender.com/api/auth/me
+GET https://https://foodbridge-backend-hhte.onrender.com/api/auth/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdiNTU0MzViNTUzOGFlNmMzNDVkMmMiLCJyb2xlIjoiZG9ub3IiLCJpYXQiOjE3ODY0Njg4NjgsImV4cCI6MTc4NzA3MzY2OH0.tBuLPE0t6v1icP3ZCVyJZ9wm2uvsCtHt_gOqizb0pmw
 ### Post Food
 
-POST https://foodbridge-lcqd.onrender.com /api/food
+POST https://https://foodbridge-backend-hhte.onrender.com/api/food
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdiNTU0MzViNTUzOGFlNmMzNDVkMmMiLCJyb2xlIjoiZG9ub3IiLCJpYXQiOjE3ODY0Njg4NjgsImV4cCI6MTc4NzA3MzY2OH0.tBuLPE0t6v1icP3ZCVyJZ9wm2uvsCtHt_gOqizb0pmw
 Content-Type: application/json
 
@@ -37,11 +37,11 @@ Content-Type: application/json
 }
 ### Get All Food
 
-GET https://foodbridge-lcqd.onrender.com/api/food
+GET https://https://foodbridge-backend-hhte.onrender.com/api/food
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdkZWRhMWVlYmIzMThlYjc0OTgwM2QiLCJyb2xlIjoibmdvIiwiaWF0IjoxNzg2NjM4NDMzLCJleHAiOjE3ODcyNDMyMzN9.50RluYenIMfKFuZPc_J9Lov3IQhWVOKWQQLAVdNqDK4
 ### NGO Signup
 
-POST https://foodbridge-lcqd.onrender.com/api/auth/signup
+POST https://https://foodbridge-backend-hhte.onrender.com/api/auth/signup
 Content-Type: application/json
 
 {
@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 ### NGO Login
 
-POST https://foodbridge-lcqd.onrender.com/api/auth/login
+POST https://https://foodbridge-backend-hhte.onrender.com/api/auth/login
 Content-Type: application/json
 
 {
@@ -61,22 +61,22 @@ Content-Type: application/json
 }
 ### Claim Food
 
-PATCH https://foodbridge-lcqd.onrender.com/api/food/6a7def5155c0be40282c2455/claim
+PATCH https://https://foodbridge-backend-hhte.onrender.com/api/food/6a7def5155c0be40282c2455/claim
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdkZWRhMWVlYmIzMThlYjc0OTgwM2QiLCJyb2xlIjoibmdvIiwiaWF0IjoxNzg2NjM4NDMzLCJleHAiOjE3ODcyNDMyMzN9.50RluYenIMfKFuZPc_J9Lov3IQhWVOKWQQLAVdNqDK4
 
 ### Donor - My Foods
 
-GET https://foodbridge-lcqd.onrender.com/api/food/my-food
+GET https://https://foodbridge-backend-hhte.onrender.com/api/food/my-food
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdiNTU0MzViNTUzOGFlNmMzNDVkMmMiLCJyb2xlIjoiZG9ub3IiLCJpYXQiOjE3ODY2Mzg4NjIsImV4cCI6MTc4NzI0MzY2Mn0.Kyglky2IngTx1H4F2QB9_ctFp4ScjC4eyKU7y4m5k78
 ### NGO - My Claimed Foods
 
-GET https://foodbridge-lcqd.onrender.com/api/food/claimed-food
+GET https://https://foodbridge-backend-hhte.onrender.com/api/food/claimed-food
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTdkZWRhMWVlYmIzMThlYjc0OTgwM2QiLCJyb2xlIjoibmdvIiwiaWF0IjoxNzg2NjM4NDMzLCJleHAiOjE3ODcyNDMyMzN9.50RluYenIMfKFuZPc_J9Lov3IQhWVOKWQQLAVdNqDK4
 ### Admin Signup
 
 ### Admin Signup
 
-POST https://foodbridge-lcqd.onrender.com/api/auth/signup
+POST https://https://foodbridge-backend-hhte.onrender.com/api/auth/signup
 Content-Type: application/json
 
 {
@@ -87,7 +87,7 @@ Content-Type: application/json
 }
 ### Admin Login
 
-POST https://foodbridge-lcqd.onrender.com/api/auth/login
+POST https://https://foodbridge-backend-hhte.onrender.com/api/auth/login
 Content-Type: application/json
 
 {
@@ -96,10 +96,10 @@ Content-Type: application/json
 }
 ### Admin - Get All NGOs
 
-GET https://foodbridge-lcqd.onrender.com/api/admin/ngos
+GET https://https://foodbridge-backend-hhte.onrender.com/api/admin/ngos
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTgxY2E3MGE5ODViNmE0NGIxYWQ5NDQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3ODY4OTE1MDksImV4cCI6MTc4NzQ5NjMwOX0.d65SouZ4Sv-WmEzfFLFuScPDK8kFXjPiEhFRTxId8Cc
 
 ### Admin - Verify NGO
 
-PATCH https://foodbridge-lcqd.onrender.com/api/admin/ngos/6a7deda1eebb318eb749803d/verify
+PATCH https://https://foodbridge-backend-hhte.onrender.com/api/admin/ngos/6a7deda1eebb318eb749803d/verify
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTgxY2E3MGE5ODViNmE0NGIxYWQ5NDQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3ODY4OTE1MDksImV4cCI6MTc4NzQ5NjMwOX0.d65SouZ4Sv-WmEzfFLFuScPDK8kFXjPiEhFRTxId8Cc
