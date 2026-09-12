@@ -37,7 +37,7 @@ router.post("/signup", async (req, res) => {
       email,
       password: hashedPassword,
       role: role || "donor",
-      isVerified: role === "donor"
+      isVerified: role === "donor"|| role === "ngo"
     });
 
     // Create JWT
